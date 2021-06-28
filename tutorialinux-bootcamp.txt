@@ -1,0 +1,660 @@
+https://youtu.be/bju_FdCo42w
+
+
+
+https://tutorialinux.com/about/
+
+
+
+
+
+https://www.linkedin.com/pulse/tutorihalinux-system-admin-commands-terminal-beau-boswell/
+ 
+STEM  Training  I organized all the notes  and   Shared minds.com platform.
+ 
+https://napleswineaficionados.com 
+ 
+ 
+ 
+https://www.minds.com/groups/profile/1208791471301836800/feed(Edited)
+
+
+
+
+cd Desktop
+ls
+pwd
+mkdir
+rm -r
+mv
+touch
+mkdir -p coolfolder/child/nested/here/
+ls coolfolder/
+rm -r coolfolder/
+rm
+touch test.txt
+mkdir somefolder/
+mv test.txt somefolder/
+cp somefolder/test.txt ./testcopy
+cp somefolder/test.txt .
+cd . .
+cd ../..
+cd home/beau/Desktop
+man ls
+ls -a
+ls -al
+ls -alh
+cat test.txt
+nano
+nano test.txt
+vi
+escape
+:w
+:q
+:q!
+man vi
+vim
+emacs
+nano
+mv somelocation someotherfile
+mv test.txt renametest.txt
+
+SHELLS And Pipes!
+
+Pipes and Input and Output Redirections.
+
+prog1 | prog2
+
+echo "hello world"
+
+hello world
+
+echo "my keyboard is standard INPUT"
+
+my keyboard is standard INPUT
+
+echo "STDIN --> 0"
+echo "STDOUT --> 1"
+echo "STDERR --> 2"
+
+echo "this should be in a file" 1>somefile.txt
+ls
+this should be in a file
+cat somefile.txt
+
+echo "this should be in a file" >somefiles.txt
+
+This is the same thing.
+
+cat somefile.txt
+
+Classic newbie mistake > deletes all previous logs.
+
+So use >>
+
+Appending
+
+Avoid overwritting
+
+Appending
+
+This creates a file and overwrites any existing file!!!
+
+echo "this should be in a file" > somefile.txt
+
+In order to append an existng file use:
+
+echo "this should be line 2" >> somefile.txt 
+cat somefile.txt
+
+ls -alh somefile.txt
+-rw-r--r--1 beau beau 47 Oct 1 06:21 somefile.txt
+
+
+Error Output 2>
+
+
+> create or overwrite a file.
+
+>> or 1> Append an existing file or create a new file too.
+
+2> Create an error file.
+
+
+
+
+Two shell features that makes the linux so powerful!
+
+echo "STDIN --> 0"
+echo "STDOUT --> 1"
+echho "STDERROR--2"
+
+ps aux
+ps aux | less
+ps aux | less | uniq | sort | grep "some search"
+tmux
+ps aux | grep init
+
+
+apt-get cache
+Htop
+nestat -tupin
+w
+login permissions
+chmod
+/etc/login.def
+cp somefolder/test.txt ./testcopy.txt
+
+
+Signals and processes how the state of the processes and hardware are communicating with the kernel.
+
+ Some commands we cover in the process (hurr hurr):
+ man 7 signal
+
+ -kill (sending signals)
+ -killall
+ -pgrep
+ -pkill
+
+
+http://www.man7.org/linux/man-pages/man7/signal.7.html
+
+
+Part 2 of Processes Section
+
+Processes are critical to understand.  This is how work gets done.  Signals are how processes communicate.
+
+Signals can be sent by the kernel or to parent process when a child process has died or finished.  Signals communicate from the Kernel to processes.
+
+Handler processes can be signaled to be terminated, killed and ignored.
+
+Kill -l
+
+ps aux | grep firefox
+
+kill 2196
+
+
+sudo killall cupsd
+
+sudo kill 2796
+
+sudo pkill -u beau(kill a user processes)
+
+man pkill
+
+put a process to sleep or on hold
+
+stop or kill a processes
+ 
+
+htop
+F9
+Then choose which process you want to send a signal to stop or kill etc.
+
+ls /etc
+
+sbin and bin.  All of your computers programs!
+
+ls /sbin | less
+ls /bin | less
+ls -alh /bin | less
+
+ls /tmp
+ls /home
+ls /root
+ls /lib64
+
+man hier
+
+all the blurbs about how the files hang together!
+
+
+ls /
+
+ls /bin/
+
+ls /bin | less
+
+ls /dev
+
+ls /dev | grep sd
+
+ls /etc | less
+
+ls /etc/ssh/^c
+
+ls /home  all users who are not root.
+
+ls /lib
+
+ls /lib64/
+
+ls /media
+
+ls /mnt
+
+ls /opt  optional software
+
+ls /proc
+
+ls /proc/1
+
+ls /root
+
+ls /sbin
+
+ifconfig
+
+/sbin/ifconfig
+
+ls /usr
+
+ls /usr/bin | wc -l
+
+ls /usr/bin | less
+
+ls /usr/bin 
+
+ls /usr/share | less
+
+ls /var
+
+ls /
+
+
+ls /dev | grep sd
+
+sda
+sda1
+sda2
+sda5
+
+Linux Sysadmin Basics 4.1 --Filtering Output and Finding Things (&&, cut, sort, uniq, wc, grep)
+
+
+Prog | prog2 | prog3^c
+
+Prog < file.txt
+
+Logical operator 
+
+& logical operator ,  varaibles, piping, filtering data
+
+beau@beau-Latitude-E6510:~/Desktop$ ls newfile && echo "astonishing success"
+newfile
+astonishing success
+
+
+
+
+prog && prog2
+
+
+cd Desktop
+
+ls file.txt 
+file.txt
+
+
+ls file.txt && echo "astonishing success."
+file.txt 
+astonishing success.
+
+ls file.txtttt && echo "astonishing success." 
+ls: cannot access file.txtttt: No such file or directory
+
+
+cat file.txt 
+beau:we
+user:love
+someone:linux
+
+cat file.txt | cut -d: -f2
+
+we 
+love
+linux
+
+
+cat file.txt | sort -bf
+beau:we
+someone:linux
+user:love
+
+
+Learn Man cut and sort
+
+uniq
+wc
+man wc
+grep 
+
+grep is a heavy weight tool for searching and finding data.
+
+
+cat file.txt | grep user
+
+
+looking for something in the filing system
+
+grep someone ./*
+
+./* | uniq
+./err.txt:someone said something
+./file.txt:someone:linux
+./file.txt:soleone:linux
+
+
+grep someone  ./* | uniq
+./err.txt:someone said something
+./file.txt:someone:linux
+
+
+grep someone ./* | cut -d: f1
+./file.txt
+
+
+
+sudo apt-get update
+
+How to update and install security updates.
+
+sudo
+
+Super User Do
+
+Root Powers
+
+sudo apt-get upgrade
+
+sudo apt-get install
+
+So to find apps to install use:
+
+apt-get cache search tmux
+
+apt-get cache editor
+
+sudo apt-get install tmux
+
+sudo apt-get remove
+
+File Atributes.
+
+
+ls -l
+
+chmod xxx 
+chown
+
+owner  group  other
+-rw-rw-r--
+
+chmod 640 newfile
+
+To be able to change mods
+ 
+--------------------------Linux Flle Permisions-----------------------------
+
+
+Change Permisions with chmod
+
+chmod 
+chmod 7= read write execute
+chmod 6= read write 
+chmod 5= read       execute
+chmod 4= read
+chmod 3=      write execute
+chmod 2=      write
+chmod 1=            execute
+chmod 0= no rights at all!
+
+
+chmod 640 newfile
+
+ 
+nano /etc/logins.defs
+
+UMASK 022
+Reverse Permisions what you are taking away!
+
+
+----------------------cat commands.txt | sort -bf-----------------------------
+----------------------sorts file alphabetically------------------------------
+
+
+
+
+cat commands.txt | grep user
+cat file.txt | grep user
+grep someone ./*
+grep someone ./* | uniq | cut -d: -f1
+
+
+
+-----------------------------User Add-----------------------------------------
+
+Go to root:
+sudo -i
+
+tail /etc/passwd
+
+root@beau-Latitude-E6510:~# tail /etc/passwd
+pulse:x:115:120:PulseAudio daemon,,,:/var/run/pulse:/usr/sbin/nologin
+avahi:x:116:122:Avahi mDNS daemon,,,:/var/run/avahi-daemon:/usr/sbin/nologin
+colord:x:117:123:colord colour management daemon,,,:/var/lib/colord:/usr/sbin/nologin
+hplip:x:118:7:HPLIP system user,,,:/var/run/hplip:/bin/false
+geoclue:x:119:124::/var/lib/geoclue:/usr/sbin/nologin
+gnome-initial-setup:x:120:65534::/run/gnome-initial-setup/:/bin/false
+gdm:x:121:125:Gnome Display Manager:/var/lib/gdm3:/bin/false
+beau:x:1000:1000:Beau,,,:/home/beau:/bin/bash
+fruitywifi:x:122:128:FruityWifi,,,:/var/run/fruitywifi:/usr/sbin/nologin
+noelwalker:x:1001:1001:Noel Walker,,,:/home/noelwalker:/bin/bash
+ 
+
+
+---------------------------------7 fields /etc/passwd/----------------------
+
+beau:x:1000:1000:Beau,,,:/home/beau:/bin/bash
+username
+x used to be password but is now hash shoffled over to /etc/shadow/
+1000 user id
+1000 default group id
+Beau,,, gecko information human readable info first name last name phone# office
+/home/beau/ home directory
+/bin/bash/ default shell
+
+----------------------------cat /etc/passwd/
+
+--------------------------cat /etc/passwd | wc -l
+
+--------------------------tail /etc/shadow----------------------------
+
+--------------------------tail /etc/passwd
+
+---------------------------sudo su
+tail /etc/shadow
+
+
+-----------------------------tail /etc/group----------------------------
+
+less  /etc/group 
+
+
+------------------------------useradd -m -d /home/schnerg -s /bin/bash schnerg
+ls /home
+tail /etc/shadow
+tail /etc/passwd
+ls /home/shnerg
+ls /etc/skel
+ls -l /home
+grep shnerg /etc/group
+
+
+------------------------------userdel
+
+passwd shnerg
+
+
+
+
+
+
+^G Get Help  ^O Write Out ^W Where Is  ^K Cut Text  ^J Justify   ^C Cur Pos
+^X Exit      ^R Read File ^\ Replace   ^U Uncut Text^T To Spell  ^_ Go To Line
+ 
+
+
+
+
+create
+/home/beau# useradd -m -d /home/shnerg -s /bin/bash/
+
+--------------------------add  newusers-------------------------------------
+
+FILES
+       /etc/passwd
+           User account information.
+
+       /etc/shadow
+           Secure user account information.
+
+       /etc/group
+           Group account information.
+
+       /etc/gshadow
+           Secure group account information.
+
+       /etc/login.defs
+           Shadow password suite configuration.
+
+       /etc/pam.d/newusers
+           PAM configuration for newusers.
+
+       /etc/subgid
+           Per user subordinate group IDs.
+
+       /etc/subuid
+           Per user subordinate user IDs.
+
+SEE ALSO
+       login.defs(5), passwd(1), subgid(5), subuid(5), useradd(8).
+
+---------------------------proc file----------------------------------
+
+the kernel lists current running processes---------------------------
+sudo su
+cd/proc
+ls
+cd 1
+ls
+ls -al cwd
+ls fd
+ls maps
+
+All out of the raw data from the kernel------------------------
+
+ls and cat things in proc
+
+cat environ
+
+
+cd /proc/1
+
+ man strace
+ls /
+
+
+-------------------------How the linux file system is organized
+------------------------------the file system is organic
+
+
+ls /
+ls /bin     part of the operating system  commands
+ls /boot
+ls /dev
+ls /dev | grep sd
+ls /etc | less
+ls /etc/ssh
+ls /home
+ls /lib
+ls /lib64
+ls /media
+ls /mnt
+ls /opt
+ls /proc
+ls /proc | less
+ls /proc/1
+ls /
+/ifconfig
+/sbin/ifconfig
+ls /tmp
+ls /usr
+ls /usr/bin | wc -l
+ls /usr/bin
+ls /usr/share 
+ls /usr/share | less
+ls /var
+ls /var/log
+
+
+
+ls /
+ls /bin
+ls /etc
+ls /etc/ssh/
+ls /sbin | less
+ls /bin | less
+ls -alh /bin | less
+ls /bin | grep rmdir
+ls /tmp
+ls /home
+ls /root
+ls /lib64
+ls /tmp
+
+man hier
+
+
+-------------------------------------crontab-----------------------------
+
+
+-----------------------------------Each User Has A Cron Table
+Discussing how scheduling processes works on linux.   Some programs scripts thing you need to work some time inthe the future.  Cron is a scheduler.  One time thing or repeating.  You can schedule it on cron.  Each user has a cron tab or cron table.
+
+
+
+
+List User Crontab--------------------------------crontab -l
+
+Edit User Cron TAble-----------------------------crontab -e
+
+id
+
+sudo ls /var/spool/cron/crontabs
+sudo less /var/spool/cron/crontabs/beau
+ls /etc/cron.d/
+sudo /etc/crontab/
+
+
+
+#15 10 *      *    3-5  echo "$(date): checking in." >> ?/var/log/mychechi
+(m) (h)(dom)(moy) (wd)  (cmd)
+#*    *   *   *   *    echo "hi there" >> /home/beau/hithere.txt
+
+#15 10 1-10/2 * 5        root     echo "$(date) -- everything looking good." >> $
+
+
+------------------------------Where to find Technical Questions---------
+
+www.catb.org
+http://www.catb.org/esr/faqs/hacker-howto.html
+https://serverfault.com/
+https://unix.stackexchange.com/questions/299398/linux-stock-exchange-trading-software
+https://stackoverflow.com/
+https://www.ietf.org/
+http://www.faqs.org/faqs/  print this up.
+Man Pages
+https://www.kernel.org/
+
